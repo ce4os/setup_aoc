@@ -13,15 +13,10 @@ print("\n-----------Advent of code setup V.0.0.2-----------\n")
 
 ## Settings
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 dotenv_path = BASE_DIR / "setup_aoc/.env"
-print(dotenv_path)
 load_dotenv(dotenv_path)
-
 day, year = get_user_input()   
 SESSION_COOKIE = os.getenv("SESSION_COOKIE")
-print(SESSION_COOKIE)
 
 SETUP_DIR = BASE_DIR / "setup_aoc"
 YEAR_DIR = BASE_DIR / year
