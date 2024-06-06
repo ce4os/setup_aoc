@@ -9,18 +9,33 @@ At some point while solving the coding puzzles of Advent of Code, I realized tha
     - writing a title and import statements to the solution file
     - providing a path to the puzzle input file
 
-Supposing that you cloned this repo the only thing you need to do before invoking the script is to get the session cookie that is stored after logging in to advent of code. In Chromium this can be done by: 
+### Preliminaries
+
+Before invoking setup.py to setup a day for you, you have to install dependencies.
+I chose to create a virtual environment to seperate this project from everything else.
+If you don't want to do this, omit the creation of the virtual environment
+```sh
+# creating a virtual environment
+python3 -m venv name_of_your_virtual_env
+
+# install dependencies (requests and python-dotenv libraries)
+pip install -r requirements.txt
+
+# creating a dotenv file
+touch .env
+```
+Now you have to get hold of the session cookie. In Chromium you can do this by following the steps below:
 - login to [Advent of Code](https://adventofcode.com/) 
 - right click: inspect 
 - navigate to Application 
 - Storage -> Cookies -> adventofcode.com 
 - copy value 
-- paste to line 43: 
-SESSION_COOKIE = "session=place-the-value-here"
-when you have done so, you can invoke the script with
-```python
-python3 setup.py
+- paste it to the appropriate place in the command below and execute it.
+
+```sh
+echo "SESSION_COOKIE=session=placeyoursessioncookiehere" > .env
 ```
+
 
 ### Example
 

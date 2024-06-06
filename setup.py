@@ -2,47 +2,21 @@ import os
 import requests
 import re
 
+from dotenv import load_dotenv
 from pathlib import Path
 from shutil import copyfile
+from cli import get_user_input
 
 
 # Interactive CLI - get year and day to setup
 print("\n-----------Advent of code setup V.0.0.1-----------\n")
-while True:
-    # Getting input for day
-    day = input("Which day to setup: ")
-    year = input("For which year: ")
 
-    # Check input
-    if not day.isdigit() or not year.isdigit():
-        print("Invalid input. Day and year must be numeric")
-        print("Try again")
-        continue
-    elif int(day) > 25 or int(day) < 0:
-        print("Advent calenders go from 1st of Dec to 25th of Dec\nTry again")
-        continue
-    elif int(year) < 2015 or int(year) > 2023:
-        print("Advent of code has puzzles for the years 2015-2023")
-        continue
-    else:
-        print("Selected day: ", day)
-        print("Selected year: ", year)
-
-    # Confirming input    
-    proceed = input("Proceed [y,n]? ")
-    if proceed.lower() == "y":
-        break
-    elif proceed == "n":
-        print("Exiting")
-        exit()
-    if proceed != "y":
-        print("Aborting...")
-        continue
-    
-# Defining paths
-SESSION_COOKIE = "session=put-your-session-cookie-here"
+## Settings
+load_dotenv()
+day, year = get_user_input()   
+SESSION_COOKIE = os.getenv("SESSION_COOKIE")
 BASE_DIR = Path(__file__).resolve().parent.parent
-SETUP_DIR = BASE_DIR / "Setup"
+SETUP_DIR = BASE_DIR / "setup_aoc"
 YEAR_DIR = BASE_DIR / year
 SRC_DIR = BASE_DIR / YEAR_DIR / "src/"
 PATH_DAY = YEAR_DIR / f"day{day}.py"
