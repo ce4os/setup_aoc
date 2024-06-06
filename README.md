@@ -13,7 +13,8 @@ At some point while solving the coding puzzles of Advent of Code, I realized tha
 
 Before invoking setup.py to setup a day for you, you have to install dependencies.
 I chose to create a virtual environment to seperate this project from everything else.
-If you don't want to do this, omit the creation of the virtual environment
+If you don't want to do this, omit the creation of the virtual environment.
+
 ```sh
 # creating a virtual environment
 python3 -m venv name_of_your_virtual_env

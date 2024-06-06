@@ -9,13 +9,20 @@ from cli import get_user_input
 
 
 # Interactive CLI - get year and day to setup
-print("\n-----------Advent of code setup V.0.0.1-----------\n")
+print("\n-----------Advent of code setup V.0.0.2-----------\n")
 
 ## Settings
-load_dotenv()
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+dotenv_path = BASE_DIR / "setup_aoc/.env"
+print(dotenv_path)
+load_dotenv(dotenv_path)
+
 day, year = get_user_input()   
 SESSION_COOKIE = os.getenv("SESSION_COOKIE")
-BASE_DIR = Path(__file__).resolve().parent.parent
+print(SESSION_COOKIE)
+
 SETUP_DIR = BASE_DIR / "setup_aoc"
 YEAR_DIR = BASE_DIR / year
 SRC_DIR = BASE_DIR / YEAR_DIR / "src/"
